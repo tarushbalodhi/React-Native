@@ -1,0 +1,109 @@
+import {
+  Text,
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image
+} from 'react-native';
+import { useState } from 'react';
+
+const Card = (props) => {
+  return (
+    <View style={[styles.card, { backgroundColor: props.color }]}>
+      <Text> {props.text} </Text>
+    </View>
+  );
+};
+
+
+export default function App() {
+  const [isScroll, setIsScroll] = useState(false);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}> FlatCards </Text>
+      <View style={styles.row}>
+        <Card color="#EF5354" text="Red" />
+        <Card color="cornflowerblue" text="Blue" />
+        <Card color="limegreen" text="green" />
+      </View>
+
+      <Text style={styles.heading}> Elevated Cards </Text>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={isScroll}
+        style={{ padding: 0, backgroundColor: 'peach' }}>
+        <View style={styles.row}>
+          <Card text="Scroll" color="khaki" style={styles.cardElevation} />
+          <Card text="Left" color="firebrick" />
+          <Card text="To" color="indianred" />
+          <Card text="Right" color="peru" />
+        </View>
+      </ScrollView>
+      <TouchableOpacity style={styles.btn} onPress={() => setIsScroll(!isScroll)}>
+        <Text>Enable Scrolling</Text>
+      </TouchableOpacity>
+      <Text style={styles.heading}> Trending Places </Text>
+      <View > 
+        <Image source={{
+          uri :   'https://images.pexels.com/photos/17054031/pexels-photo-17054031/free-photo-of-wood-landscape-water-field.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        }}
+        style = {styles.cardImg}
+        />
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    padding: 10,
+  },
+  card: {
+    height: 90,
+    width: 90,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    margin: 7,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  container: {
+    justifyContent: 'center',
+    paddingHorizontal: 12,
+    padding: 8,
+  },
+  cardElevation: {
+    elevation: 4,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowColor: 'black',
+  },
+  btn: {
+    whiteSpace: 'pre',
+    fontSize: 18,
+    fontWeight: 500,
+    padding: 12,
+    width: '50%',
+    marginHorizontal: 'auto',
+    marginVertical: 20,
+    backgroundColor: 'tomato',
+    borderRadius: 10,
+  },
+  cardImg : {
+    marginVertical : 20,
+    margin: 'auto',
+    height : 200,
+    width : 300,
+    backgroundColor : 'peru',
+  }
+});
