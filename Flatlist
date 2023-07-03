@@ -1,0 +1,200 @@
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
+
+const Card = (props) => {
+  const item = props.item;
+  return (
+    <View style={[styles.card, { backgroundColor: props.color }]}>
+      <Text style={styles.cardText}> {item.name} </Text>
+      <Text style={styles.cardText}>Id : {item.id} </Text>
+      <Text style={styles.cardText}> {item.email} </Text>
+    </View>
+  );
+};
+
+export default function App() {
+  const data = [
+    {
+      id: 1,
+      name: 'John Doe',
+      age: 25,
+      email: 'johndoe@example.com',
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      age: 30,
+      email: 'janesmith@example.com',
+    },
+    {
+      id: 3,
+      name: 'Alex Johnson',
+      age: 35,
+      email: 'alexjohnson@example.com',
+    },
+    {
+      id: 4,
+      name: 'Emily Brown',
+      age: 28,
+      email: 'emilybrown@example.com',
+    },
+    {
+      id: 5,
+      name: 'Michael Davis',
+      age: 32,
+      email: 'michaeldavis@example.com',
+    },
+    {
+      id: 6,
+      name: 'Sophia Wilson',
+      age: 27,
+      email: 'sophiawilson@example.com',
+    },
+    {
+      id: 7,
+      name: 'William Taylor',
+      age: 29,
+      email: 'williamtaylor@example.com',
+    },
+    {
+      id: 8,
+      name: 'Olivia Anderson',
+      age: 31,
+      email: 'oliviaanderson@example.com',
+    },
+    {
+      id: 9,
+      name: 'James Martinez',
+      age: 26,
+      email: 'jamesmartinez@example.com',
+    },
+    {
+      id: 10,
+      name: 'Ava Harris',
+      age: 33,
+      email: 'avaharris@example.com',
+    },
+    {
+      id: 11,
+      name: 'Daniel Clark',
+      age: 34,
+      email: 'danielclark@example.com',
+    },
+    {
+      id: 12,
+      name: 'Mia Lewis',
+      age: 36,
+      email: 'milewis@example.com',
+    },
+    {
+      id: 13,
+      name: 'Benjamin Walker',
+      age: 27,
+      email: 'benjaminwalker@example.com',
+    },
+    {
+      id: 14,
+      name: 'Isabella Turner',
+      age: 29,
+      email: 'isabellaturner@example.com',
+    },
+    {
+      id: 15,
+      name: 'Henry Wright',
+      age: 32,
+      email: 'henrywright@example.com',
+    },
+    {
+      id: 16,
+      name: 'Amelia Adams',
+      age: 30,
+      email: 'ameliaadams@example.com',
+    },
+    {
+      id: 17,
+      name: 'Joseph Robinson',
+      age: 28,
+      email: 'josephrobinson@example.com',
+    },
+    {
+      id: 18,
+      name: 'Charlotte Campbell',
+      age: 31,
+      email: 'charlottecampbell@example.com',
+    },
+    {
+      id: 19,
+      name: 'David Stewart',
+      age: 25,
+      email: 'davidstewart@example.com',
+    },
+  ];
+
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={{
+          uri: 'https://images.pexels.com/photos/1723637/pexels-photo-1723637.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        }}
+        resizeMode="fill"
+        style={styles.bgImage}>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            // width: '100%',
+          }}>
+          <>
+            <FlatList
+              data={data}
+              renderItem={({ item }) => <Card item={item} />}
+            />
+          </>
+        </View>
+      </ImageBackground>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width:"100%",
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+    alignSelf: 'center',
+  },
+  card: {
+    alignItems: 'center',
+    height: 'auto',
+    width:'auto',
+    padding: 8,
+    margin: 5,
+    borderRadius: 10,
+    opacity: 0.6,
+    borderWidth: 1,
+    borderColor: 'lavenderblush',
+  },
+  bgImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  cardText: {
+    fontSize: 16,
+    fontWeight: 600,
+    color: 'white',
+  },
+});
+
+// {data.map((item) => (
+//   <Card color="coral" name={item.name} id={item.id} email={item.email} />
+// ))}
+
